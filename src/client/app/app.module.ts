@@ -1,19 +1,13 @@
-import { HttpClientModule } from "@angular/common/http";
-import { Component, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
-@Component({
-  selector: "app-root",
-  templateUrl: "app.component.html"
-})
-export class AppComponent {
-  constructor() {}
-}
+import { AppComponent } from "./app.component";
+import { DataService } from "./services/data.service";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule],
-  providers: [],
+  imports: [BrowserModule],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

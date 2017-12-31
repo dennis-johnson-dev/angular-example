@@ -83,6 +83,9 @@ module.exports = merge(commonConfig, {
       debug: false
     }),
     new UglifyJsPlugin({
+      cache: true,
+      parallel: 3,
+      uglifyOptions: {},
       sourceMap: true
     }),
     new webpack.NoEmitOnErrorsPlugin(),

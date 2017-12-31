@@ -5,16 +5,16 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "../src/client/app/index.ts"),
+    app: path.resolve(__dirname, "../src/client/app/index.ts")
   },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "../lib/resources"),
-    publicPath: "/",
+    publicPath: "/"
   },
   resolve: {
     alias: rxPaths(),
-    extensions: [".ts", ".js", ".html", ".css", ".scss", ".png"],
+    extensions: [".ts", ".js", ".html", ".css", ".scss", ".png"]
   },
   module: {
     rules: [
@@ -22,37 +22,37 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: "to-string-loader",
+            loader: "to-string-loader"
           },
           {
-            loader: "css-loader",
+            loader: "css-loader"
           },
           {
             loader: "postcss-loader",
             options: {
               plugins: [
                 require("autoprefixer")({
-                  grid: true,
-                }),
+                  grid: true
+                })
               ],
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
 
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-    ],
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-      "process.env.BUILD_ENV": JSON.stringify(process.env.BUILD_ENV),
+      "process.env.BUILD_ENV": JSON.stringify(process.env.BUILD_ENV)
     }),
     new webpack.ContextReplacementPlugin(
       /@angular(\\|\/)core(\\|\/)esm5/,
@@ -64,15 +64,15 @@ module.exports = {
           __dirname,
           "../node_modules/es6-promise/dist/es6-promise.auto.min*"
         ),
-        to: "[name].[ext]",
+        to: "[name].[ext]"
       },
       {
         from: path.resolve(
           __dirname,
           "../node_modules/le_js/product/le.min.js"
         ),
-        to: "[name].[ext]",
-      },
-    ]),
-  ],
+        to: "[name].[ext]"
+      }
+    ])
+  ]
 };

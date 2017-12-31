@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["src/client/**/*.ts"],
+  "include": ["src/client/**/*.ts", "node_modules/rxjs/**/*.ts"],
   "exclude": [
     "src/server/**/*.ts",
     "**/*.spec.ts",

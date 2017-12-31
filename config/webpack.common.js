@@ -1,6 +1,6 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
-const rxPaths = require("rxjs/_esm5/path-mapping");
+const rxPaths = require("rxjs/_esm2015/path-mapping");
 const webpack = require("webpack");
 
 module.exports = {

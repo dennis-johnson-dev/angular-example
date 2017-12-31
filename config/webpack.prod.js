@@ -37,7 +37,10 @@ module.exports = merge(commonConfig, {
             }
           }
         ],
-        include: path.resolve(__dirname, "../src/client")
+        include: [
+          path.resolve(__dirname, "../src/client"),
+          path.resolve(__dirname, "../node_modules/rxjs")
+        ]
       },
       {
         test: /\.html$/,

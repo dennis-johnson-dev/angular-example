@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Angular Example</title>
+  <base href="/"> {{#each fileNames.page.css}}
+  <link href="/{{ this }}" rel="stylesheet"> {{/each}}
+
+  <script src="/es6-promise.auto.min.js"></script>
+  <script src="/le.min.js"></script> {{#each fileNames.runtime.js}}
+  <script src="/{{ this }}"></script> {{/each}} {{#each fileNames.vendor.js}}
+  <script src="/{{ this }}"></script> {{/each}}
+</head>
+
+<body>
+  <app-root></app-root>
+  {{#each fileNames.page.js}}
+  <script src="/{{ this }}"></script> {{/each}}
+</body>
+
+</html>

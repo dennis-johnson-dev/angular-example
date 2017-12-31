@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["src/client/**/*.ts"],
+  "exclude": [
+    "src/server/**/*.ts",
+    "**/*.spec.ts",
+    "src/client/test.js",
+    "src/client/init-test-env.js"
+  ]
+}

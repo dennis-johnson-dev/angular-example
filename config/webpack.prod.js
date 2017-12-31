@@ -85,7 +85,11 @@ module.exports = merge(commonConfig, {
     new UglifyJsPlugin({
       cache: true,
       parallel: 3,
-      uglifyOptions: {},
+      uglifyOptions: {
+        mangle: {
+          keep_fnames: true
+        }
+      },
       sourceMap: true
     }),
     new webpack.NoEmitOnErrorsPlugin(),

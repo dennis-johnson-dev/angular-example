@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
-import { map } from "rxjs/operators/map";
+import { map } from "rxjs/operators";
 
 export type Datas = {
   foo: boolean;

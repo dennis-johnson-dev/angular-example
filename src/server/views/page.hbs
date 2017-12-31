@@ -6,8 +6,7 @@
   <base href="/"> {{#each fileNames.page.css}}
   <link href="/{{ this }}" rel="stylesheet"> {{/each}}
 
-  <script src="/es6-promise.auto.min.js"></script>
-  <script src="/le.min.js"></script> {{#each fileNames.runtime.js}}
+  <script src="/es6-promise.auto.min.js"></script> {{#each fileNames.runtime.js}}
   <script src="/{{ this }}"></script> {{/each}} {{#each fileNames.vendor.js}}
   <script src="/{{ this }}"></script> {{/each}}
 </head>

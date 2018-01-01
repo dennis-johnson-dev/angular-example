@@ -37,10 +37,8 @@ module.exports = merge(commonConfig, {
             }
           }
         ],
-        include: [
-          path.resolve(__dirname, "../src/client"),
-          path.resolve(__dirname, "../node_modules/rxjs")
-        ]
+        include: [path.resolve(__dirname, "../src/client")],
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,
@@ -87,7 +85,7 @@ module.exports = merge(commonConfig, {
     }),
     new UglifyJsPlugin({
       cache: true,
-      parallel: 3,
+      parallel: 4,
       uglifyOptions: {
         mangle: {
           keep_fnames: true

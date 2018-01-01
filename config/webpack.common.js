@@ -19,6 +19,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: [path.resolve(__dirname, "../node_modules/rxjs")],
+        use: {
+          loader: "babel-loader?cacheDirectory",
+          options: {
+            presets: [
+              [
+                "@babel/env",
+                {
+                  modules: false
+                }
+              ]
+            ]
+          }
+        }
+      },
+      {
         test: /\.scss$/,
         use: [
           {

@@ -11,11 +11,11 @@ const commonConfig = require("./webpack.common");
 
 module.exports = merge(commonConfig, {
   entry: {
-    vendor: [path.resolve(__dirname, "../src/client/polyfills.ts")]
+    vendor: [path.resolve(__dirname, "../src/client/polyfills.ts")],
   },
   output: {
     filename: "[name].[chunkhash].js",
-    chunkFilename: "[name].[chunkhash].js"
+    chunkFilename: "[name].[chunkhash].js",
   },
   devtool: "source-map",
   module: {
@@ -26,33 +26,33 @@ module.exports = merge(commonConfig, {
           {
             loader: "awesome-typescript-loader",
             options: {
-              configFileName: path.resolve(__dirname, "./tsconfig.client.json")
-            }
+              configFileName: path.resolve(__dirname, "./tsconfig.client.json"),
+            },
           },
           { loader: "angular2-template-loader?keepUrl=true" },
           {
             loader: "@angular-devkit/build-optimizer/webpack-loader",
             options: {
-              sourceMap: false
-            }
-          }
+              sourceMap: false,
+            },
+          },
         ],
-        include: path.resolve(__dirname, "../src/client")
+        include: path.resolve(__dirname, "../src/client"),
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "file-loader?name=[hash]-[name].[ext]"
+            loader: "file-loader?name=[hash]-[name].[ext]",
           },
           { loader: "extract-loader" },
           {
             loader: "html-loader",
             options: {
-              minimize: false
-            }
-          }
-        ]
+              minimize: false,
+            },
+          },
+        ],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -64,33 +64,33 @@ module.exports = merge(commonConfig, {
               gifsicle: {
                 enabled: true,
                 colors: 200,
-                optimizationLevel: 3
+                optimizationLevel: 3,
               },
               pngquant: {
                 enabled: true,
                 quality: "65-90",
-                speed: 4
-              }
-            }
-          }
-        ]
-      }
-    ]
+                speed: 4,
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false
+      debug: false,
     }),
     new UglifyJsPlugin({
       cache: true,
       parallel: 3,
       uglifyOptions: {
         mangle: {
-          keep_fnames: true
-        }
+          keep_fnames: true,
+        },
       },
-      sourceMap: true
+      sourceMap: true,
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new CompressionPlugin({
@@ -98,7 +98,7 @@ module.exports = merge(commonConfig, {
       algorithm: "gzip",
       test: /\.(css|js|html)$/,
       threshold: 10240,
-      minRatio: 0.8
+      minRatio: 0.8,
     }),
     new StatsWriterPlugin({
       transform: (data, opts) => {
@@ -112,16 +112,16 @@ module.exports = merge(commonConfig, {
         });
 
         return JSON.stringify(output, null, 2);
-      }
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: ["vendor", "runtime"],
-      minChunks: Infinity
+      minChunks: Infinity,
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new PurifyPlugin()
+    new PurifyPlugin(),
   ],
-  recordsPath: path.resolve(__dirname, "../records.json")
+  recordsPath: path.resolve(__dirname, "../records.json"),
 });
 
 function getFilesByType(assets) {

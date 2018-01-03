@@ -21,3 +21,5 @@ While NOT affecting build size.
 The master branch contains the "deep imports" method (`rxjs/operators/map`) which results in a small bundle size.
 
 The "operators" branch refers to using `rxjs/operators` and this results in a larger bundle.
+
+The usage of these imports is located in `src/client/app/services/data.service.ts`.

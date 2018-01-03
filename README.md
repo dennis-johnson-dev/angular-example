@@ -50,6 +50,10 @@ On the operators branch, you should see a significant RxJS source.
 
 ![Alt text](doc/operators.png?raw=true)
 
+Without vendor chunking at all, we see the same issue:
+
+![Alt text](doc/no_chunking.png?raw=true)
+
 ### Webpack
 
 For setting up tree shaking, I've done the following:

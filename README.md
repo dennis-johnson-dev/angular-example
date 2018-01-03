@@ -40,13 +40,17 @@ npx source-map-explorer ./lib/resources/app<some-hash>.js
 
 On the master branch, you shouldn't see a significant RxJS source.
 
+![Alt text](doc/deep_import.png?raw=true)
+
 On the operators branch, you should see a significant RxJS source.
+
+![Alt text](doc/operators.png?raw=true)
 
 ### Webpack
 
 For setting up tree shaking, I've done the following:
 
-* utilized the rxjs path mapping
+* utilized the rxjs path mapping (es5)
 * output "esnext" module format from TypeScript compiler
 * added webpack.optimize.ModuleConcatenationPlugin()
 * using new (ES friendly) uglifyjs-webpack-plugin

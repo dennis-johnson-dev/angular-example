@@ -23,3 +23,33 @@ The master branch contains the "deep imports" method (`rxjs/operators/map`) whic
 The "operators" branch refers to using `rxjs/operators` and this results in a larger bundle.
 
 The usage of these imports is located in `src/client/app/services/data.service.ts`.
+
+### Running Example
+
+You can run a prod build:
+
+```js
+yarn build
+```
+
+Then inspect the bundle
+
+```js
+npx source-map-explorer ./lib/resources/app<some-hash>.js
+```
+
+On the master branch, you shouldn't see a significant RxJS source.
+
+On the operators branch, you should see a significant RxJS source.
+
+### Webpack
+
+For setting up tree shaking, I've done the following:
+
+* utilized the rxjs path mapping
+* output "esnext" module format from TypeScript compiler
+* added webpack.optimize.ModuleConcatenationPlugin()
+* using new (ES friendly) uglifyjs-webpack-plugin
+* using @angular-devkit/build-optimizer/webpack-loader
+* using PurifyPlugin
+* am NOT using explicit vendor chunking (am using commons chunk though)

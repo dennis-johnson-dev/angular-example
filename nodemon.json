@@ -1,0 +1,11 @@
+{
+  "execMap": {
+    "ts": "ts-node --project config/tsconfig.server.json"
+  },
+  "watch": [
+    "src/server/**/*.ts",
+    ".env",
+    "src/server/views/**/*.hbs"
+  ],
+  "ext": "ts env hbs"
+}

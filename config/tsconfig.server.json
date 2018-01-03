@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "../src/server/**/*.ts",
+    "../src/server/**/*.js",
+    "../src/custom-types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "../src/server/__test__/**/*.ts"],
+  "compileOnSave": false
+}

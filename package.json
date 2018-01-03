@@ -7,20 +7,25 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf lib",
-    "build": "run-p build:server build:client",
+    "build": "NODE_ENV=production run-p build:server build:client",
     "build:server": "tsc --project config/tsconfig.server.json",
     "build:client": "webpack --config ./config/webpack.prod.js",
     "heroku-postbuild": "node ./scripts/get-records.js && yarn build",
     "postbuild": "mkdir lib/views && cp src/server/views/* lib/views",
     "dev": "run-p dev:server dev:client",
     "dev:server": "nodemon -r dotenv/config src/server/index.ts",
-    "dev:client": "node -r dotenv/config node_modules/.bin/webpack-dev-server --config ./config/webpack.dev.js",
-    "lint": "tslint -c ./tslint.json -p tsconfig.json -e **/node_modules -e src/custom-typings/**/*.ts",
-    "start": "node -r dotenv/config lib/index.js",
+    "dev:client":
+      "node -r dotenv/config node_modules/.bin/webpack-dev-server --config ./config/webpack.dev.js",
+    "lint":
+      "tslint -c ./tslint.json -p tsconfig.json -e **/node_modules -e src/custom-typings/**/*.ts",
+    "start": "NODE_ENV=production node lib/index.js",
     "test": "run-s test:server test:client",
-    "test:client": "node -r ./src/client/init-test-env.js node_modules/.bin/karma start --browsers ChromeHeadless --single-run --progress=false",
-    "test:client:watch": "node -r ./src/client/init-test-env.js node_modules/.bin/karma start --browsers ChromeWithDebugging --autoWatch",
-    "test:server": "mocha --opts mocha.opts $(find src/server/__test__ -name '*.ts')",
+    "test:client":
+      "node -r ./src/client/init-test-env.js node_modules/.bin/karma start --browsers ChromeHeadless --single-run --progress=false",
+    "test:client:watch":
+      "node -r ./src/client/init-test-env.js node_modules/.bin/karma start --browsers ChromeWithDebugging --autoWatch",
+    "test:server":
+      "mocha --opts mocha.opts $(find src/server/__test__ -name '*.ts')",
     "test:server:watch": "yarn test:server --watch"
   },
   "dependencies": {
@@ -75,7 +80,8 @@
     "koa-router": "7.2.1",
     "koa-session": "^5.5.1",
     "koa-static": "4.0.1",
-    "le_js": "git://github.com/rapid7/le_js.git#e7480de232409cb5a5416cb99e4fd87794c11f0e",
+    "le_js":
+      "git://github.com/rapid7/le_js.git#e7480de232409cb5a5416cb99e4fd87794c11f0e",
     "le_node": "^1.7.1",
     "node-sass": "4.5.3",
     "nodemon": "1.11.0",

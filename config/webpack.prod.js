@@ -10,9 +10,6 @@ const webpack = require("webpack");
 const commonConfig = require("./webpack.common");
 
 module.exports = merge(commonConfig, {
-  entry: {
-    vendor: [path.resolve(__dirname, "../src/client/polyfills.ts")],
-  },
   output: {
     filename: "[name].[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
@@ -114,10 +111,10 @@ module.exports = merge(commonConfig, {
         return JSON.stringify(output, null, 2);
       },
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ["vendor", "runtime"],
-      minChunks: Infinity,
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: ["vendor", "runtime"],
+    //   minChunks: Infinity,
+    // }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new PurifyPlugin(),
   ],

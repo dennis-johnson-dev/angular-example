@@ -46,13 +46,17 @@ On the master branch, you shouldn't see a significant RxJS source.
 
 ![Alt text](doc/deep_import.png?raw=true)
 
-On the operators branch, you should see a significant RxJS source.
+On the operators branch, you should see a significant RxJS source (operators branch).
 
 ![Alt text](doc/operators.png?raw=true)
 
-Without vendor chunking at all, we see the same issue:
+Without vendor chunking at all, we see the same issue (no_chunking branch):
 
 ![Alt text](doc/no_chunking.png?raw=true)
+
+Without vendor chunking and with AOT compilation, we see the same issue (aot branch):
+
+![Alt text](doc/aot.png?raw=true)
 
 ### Webpack
 

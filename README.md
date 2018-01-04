@@ -58,6 +58,10 @@ Without vendor chunking and with AOT compilation, we see the same issue (aot bra
 
 ![Alt text](doc/aot.png?raw=true)
 
+Without vendor chunking and with AOT compilation, but with using deep imports, we see a 40Kb drop in size related to RxJS. This is using the `import { map } from 'rxjs/operators/map'` import syntax.
+
+![Alt text](doc/aot_deep_imports.png?raw=true)
+
 ### Webpack
 
 For setting up tree shaking, I've done the following:

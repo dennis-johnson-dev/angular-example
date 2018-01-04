@@ -6,6 +6,7 @@ const PurifyPlugin = require("@angular-devkit/build-optimizer").PurifyPlugin;
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
+const { AngularCompilerPlugin } = require("@ngtools/webpack");
 
 const commonConfig = require("./webpack.common");
 
@@ -21,12 +22,8 @@ module.exports = merge(commonConfig, {
         test: /.ts$/,
         use: [
           {
-            loader: "awesome-typescript-loader",
-            options: {
-              configFileName: path.resolve(__dirname, "./tsconfig.client.json"),
-            },
+            loader: "@ngtools/webpack",
           },
-          { loader: "angular2-template-loader?keepUrl=true" },
           {
             loader: "@angular-devkit/build-optimizer/webpack-loader",
             options: {
@@ -75,6 +72,14 @@ module.exports = merge(commonConfig, {
     ],
   },
   plugins: [
+    new AngularCompilerPlugin({
+      tsConfigPath: path.resolve(__dirname, "./tsconfig.client.json"),
+      entryModule: path.resolve(
+        __dirname,
+        "../src/client/app/app.module#AppModule"
+      ),
+      sourceMap: true,
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,

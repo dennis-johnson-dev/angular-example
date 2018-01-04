@@ -37,10 +37,6 @@ module.exports = merge(commonConfig, {
         test: /\.html$/,
         use: [
           {
-            loader: "file-loader?name=[hash]-[name].[ext]",
-          },
-          { loader: "extract-loader" },
-          {
             loader: "html-loader",
             options: {
               minimize: false,
